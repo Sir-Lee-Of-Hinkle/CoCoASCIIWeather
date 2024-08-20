@@ -127,9 +127,9 @@ void get_forecast() {
 	fCastWeek[1].tempH = 72 + rnd(26);
 	fCastWeek[2].tempH = 72 + rnd(26);
 
-	fCastWeek[0].tempL = 60 + rnd(24);
-	fCastWeek[1].tempL = 60 + rnd(24);
-	fCastWeek[2].tempL = 60 + rnd(24);
+	fCastWeek[0].tempL = 60 + rnd(23);
+	fCastWeek[1].tempL = 60 + rnd(23);
+	fCastWeek[2].tempL = 60 + rnd(23);
 
 	fCastWeek[0].rchance = rnd(10) * 10;
 	fCastWeek[1].rchance = rnd(10) * 10;
@@ -152,9 +152,8 @@ void get_temperature_now() {
 
 }
 
-void update_display() 
-{
-  cls(0);	//Clear the screen Black
+void update_display() {
+	cls(0);	//Clear the screen Black
 	
 // Print the forecast days
 	locate(2,0);
@@ -196,9 +195,9 @@ void update_display()
 		
 }
 
-void putIcon(byte day, int icon)
-{
-	byte row = 1;
+void putIcon(byte day, int icon) {
+////// This routine puts the icon on the screen
+  byte row = 1;
   byte col = 0;
   byte sCol;
 	byte maxCol;
@@ -215,14 +214,12 @@ void putIcon(byte day, int icon)
 	col = sCol;
 	maxCol = col + 10;
 
+	// print the characters of the icon
 	for (byte icPos = 0; icPos <= 69; icPos++) {
 		printCharAt( row, col, ICONS[icon][icPos]);
-		//locate(1,1);
-		//printf("row:%d\ncol:%d\nicPos:%d\nchar:%c",row, col, icPos, CLD[icPos]);
 		col++;
+		// if this is the end of the row, move cursor back for the next row
 		if (col >= maxCol) {
-			//locate(1,6);
-			//printf("-MaxCol-@%d",col);
 			col = sCol;
 			row++;
 		}
@@ -234,13 +231,14 @@ void putIcon(byte day, int icon)
 */
 }
 
-void printCharAt(byte x, byte y, byte asciiCode)
-{
+void printCharAt(byte x, byte y, byte asciiCode) {
+// Print an ascii character to the screen at the specified location
 	locate(y, x);
 	putchar(asciiCode);
 }
 
 int rnd(int max) {
+// generate a random number
   return rand() % max;
 }
 
