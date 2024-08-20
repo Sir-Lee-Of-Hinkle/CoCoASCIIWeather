@@ -243,20 +243,4 @@ void printCharAt(byte x, byte y, byte asciiCode)
 int rnd(int max) {
   return rand() % max;
 }
-/*
-void sleep(int seconds)
-{
-    if (!seconds)
-        return;
-    unsigned limit = 60 * (unsigned) seconds; 
-    setTimer(0);
-    while (getTimer() < limit)
-        ;
-}
-*/
-/*
-void delay(int count) {
-    int i;
-    for (i = 0; i < count; ++i);
-}
-*/
+
